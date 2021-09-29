@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { OpenContext } from '../context/ControlContext'
 
 const menuContainerStyle = {
   position: 'relative',
@@ -33,29 +34,29 @@ const menuStyle = {
 }
 
 function Menu({ title, children }) {
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
+  const isOpenUtil = useContext(OpenContext)
 
   useEffect(() => {
-    if (isOpen) {
-      document.getElementsByClassName('menu-btn')[0].textContent = '︽'
+    if (isOpenUtil.openContext) {
+      // document.getElementsByClassName('menu-btn')[0].textContent = '︽'
       document.getElementsByClassName('menu')[0].style.display = 'block'
     } else {
-      document.getElementsByClassName('menu-btn')[0].textContent = '︾'
+      // document.getElementsByClassName('menu-btn')[0].textContent = '︾'
       document.getElementsByClassName('menu')[0].style.display = 'none'
     }
-  }, [isOpen])
+  }, [isOpenUtil.openContext])
 
   return (
     <div style={menuContainerStyle}>
       <p style={menuTitleStyle}>{title}</p>
       <button
-        className="menu-btn"
         style={menuBtnStyle}
         onClick={() => {
-          setIsOpen(!isOpen)
+          isOpenUtil.setOpenContext({ type: 'SWITCH' })
         }}
       >
-        ︾
+        {isOpenUtil.openContext ? '︽' : '︾'}
       </button>
       <ul className="menu">{children}</ul>
     </div>

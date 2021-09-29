@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { itemStore } from './model/store.js'
+import { OpenContext } from './context/ControlContext.js'
 
 import { HashRouter, Route, Switch, Link } from 'react-router-dom'
 import MenuPage from './page/MenuPage'
@@ -39,4 +42,9 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <Provider store={itemStore}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)

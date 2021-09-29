@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 
 const formStyle = {
-  display: "flex",
-  justifyContent: "center"
+  display: 'flex',
+  justifyContent: 'center',
 }
 
 const InputForm = () => {

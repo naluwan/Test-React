@@ -1,8 +1,12 @@
-import React from 'react'
-import InputForm from '../component/InputForm'
+import React, { lazy, Suspense } from 'react'
+const InputForm = lazy(() => import('../component/InputForm'))
 
 const FormPage = () => {
-  return <InputForm />
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <InputForm />
+    </Suspense>
+  )
 }
 
 export default FormPage

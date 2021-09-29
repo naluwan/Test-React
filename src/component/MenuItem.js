@@ -1,12 +1,7 @@
-import React from 'react'
-
-const menuItemStyle = {
-  marginBottom: '7px',
-  listStyle: 'none',
-}
+import React, { memo } from 'react'
+import { MenuStyleItem } from './MenuStyleItem'
 
 function MenuItem({ text }) {
-  return <li style={menuItemStyle}>{text}</li>
+  return <MenuStyleItem>{text}</MenuStyleItem>
 }
-
-export default MenuItem
+export default memo(MenuItem)
